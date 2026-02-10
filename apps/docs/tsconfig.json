@@ -1,0 +1,25 @@
+{
+    "extends": "../../packages/typescript-config/base.json",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ],
+            "fumadocs-mdx:collections/*": [
+                "src/.source/*"
+            ]
+        }
+    },
+    "include": [
+        "src",
+        "vite.config.ts",
+        "eslint.config.js",
+        "src/main.tsx",
+        "App.tsx",
+        "source.config.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
