@@ -1,28 +1,13 @@
-// import {
-//     IconButton,
-//     Skeleton,
-//     Tooltip
-// } from "@mui/material";
 import React from "react"
-import { ArrowDown, ArrowUp } from "lucide-react";
+import { ArrowDown, ArrowUp, ArrowUpFromLine, ChevronDown, ChevronRight } from "lucide-react";
 import { cn } from "@workspace/ui/lib/utils";
 import { Link } from "react-router-dom";
-
-interface TableProps {
-    columns: any[];
-    data: any[];
-    isLoading?: boolean;
-    actions?: any[];
-    sortConfig?: any;
-    onSort?: (key: string) => void;
-    emptyState?: any;
-    onRowClick?: (row: any) => void;
-    className?: string;
-    expandable?: boolean;
-    renderExpandedContent?: (row: any) => React.ReactNode;
-    rowKey?: (row: any, index: number) => string | number;
-}
-
+import Skeleton from "./Skeleton";
+import { TableProps } from "@/types/Table";
+// import {
+//     IconButton,
+//     Tooltip
+// } from "@mui/material";
 
 export default function Table({
     columns = [],
@@ -117,12 +102,12 @@ export default function Table({
                                 <tr key={`skeleton-${index}`} className="animate-pulse">
                                     {columns.map((col, colIndex) => (
                                         <td key={colIndex} className="px-4 py-4">
-                                            {/* <Skeleton variant="text" width="80%" height={20} className="bg-white/50" /> */}
+                                            <Skeleton variant="text" width="80%" height={20} className="bg-white/50" />
                                         </td>
                                     ))}
                                     {actions.length > 0 && (
                                         <td className="px-4 py-4 text-right">
-                                            {/* <Skeleton variant="rectangular" width={60} height={24} className="rounded ml-auto bg-white/50" /> */}
+                                            <Skeleton variant="rectangular" width={60} height={24} className="rounded ml-auto bg-white/50" />
                                         </td>
                                     )}
                                 </tr>
@@ -217,7 +202,6 @@ export default function Table({
                                                             const tooltipTitle = typeof action.tooltip === 'function' ? action.tooltip(row) : (action.tooltip || action.label || '');
 
                                                             const ButtonContent = (
-                                                                <></>
                                                                 // <IconButton
                                                                 //     size="small"
                                                                 //     onClick={(e: React.MouseEvent) => {
@@ -235,19 +219,20 @@ export default function Table({
                                                                 // >
                                                                 //     {ActionIcon ? <ActionIcon size={16} /> : <ArrowUpFromLine size={16} />}
                                                                 // </IconButton>
+                                                                <></>
                                                             )
 
                                                             return (
                                                                 <>
-                                                                    {/* <Tooltip key={actionIndex} title={tooltipTitle} arrow> */}
-                                                                    {linkPath ? (
-                                                                        <Link to={linkPath} onClick={(e) => e.stopPropagation()}>
-                                                                            {ButtonContent}
-                                                                        </Link>
-                                                                    ) : (
-                                                                        <span>{ButtonContent}</span>
-                                                                    )}
-                                                                    {/* </Tooltip> */}
+                                                                    {/* <Tooltip key={actionIndex} title={tooltipTitle} arrow>
+                                                                        {linkPath ? (
+                                                                            <Link to={linkPath} onClick={(e) => e.stopPropagation()}>
+                                                                                {ButtonContent}
+                                                                            </Link>
+                                                                        ) : (
+                                                                            <span>{ButtonContent}</span>
+                                                                        )}
+                                                                    </Tooltip> */}
                                                                 </>
                                                             );
                                                         })}

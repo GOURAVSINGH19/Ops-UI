@@ -1,17 +1,9 @@
-
-import fs from "node:fs/promises"
-import path from "node:path"
 import * as React from "react"
-
-const isServer = typeof window === "undefined";
-
-import { highlightCode } from "../../lib/highlightCode"
-import { docsConfig } from "../../config/docs"
 import { cn } from "@workspace/ui/lib/utils"
 import { CodeCollapsibleWrapper } from "./CodeCollapse"
 import { CopyButton } from "./Copy-button"
 
-export async function ComponentSource({
+export function ComponentSource({
   name,
   src,
   title,
@@ -25,28 +17,57 @@ export async function ComponentSource({
   language?: string
   collapsible?: boolean
 }) {
+  const [data, setData] = React.useState<{ code: string; highlightedCode: string } | null>(null)
+  const [error, setError] = React.useState<string | null>(null)
+  const [loading, setLoading] = React.useState(false)
+
+  React.useEffect(() => {
+    if (!src) return
+
+    setLoading(true)
+    const fetchSource = async () => {
+      try {
+        const lang = language ?? title?.split(".").pop() ?? "tsx"
+        const res = await fetch(`/api/source?src=${encodeURIComponent(src)}&lang=${lang}`)
+        if (!res.ok) {
+          const err = await res.json()
+          throw new Error(err.error || "Failed to fetch source")
+        }
+        const json = await res.json()
+        setData(json)
+      } catch (err: any) {
+        console.error("Error fetching component source:", err)
+        setError(err.message)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchSource()
+  }, [src, language, title])
+
   if (!name && !src) {
     return null
   }
 
-  let code: string | undefined
-
-  if (src && isServer) {
-    const file = await fs.readFile(path.join(process.cwd(), src), "utf-8")
-    code = file
+  if (loading) {
+    return <div className="text-sm text-neutral-500 p-4">Loading source...</div>
   }
 
-  if (!code) {
+  if (error) {
+    return <div className="text-sm text-red-500 p-4">Error: {error}</div>
+  }
+
+  if (!data) {
     return null
   }
 
+  const { code, highlightedCode } = data
   const lang = language ?? title?.split(".").pop() ?? "tsx"
-  const theme = docsConfig.codeTheme || "default"
-  const highlightedCode = await highlightCode(code, lang, theme)
 
   if (!collapsible) {
     return (
-      <div className={cn("relative", className)}>
+      <div className={cn("relative w-full", className)}>
         <ComponentCode
           code={code}
           highlightedCode={highlightedCode}

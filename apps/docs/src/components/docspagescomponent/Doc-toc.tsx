@@ -9,7 +9,7 @@ interface DocsTableOfContentsProps {
       title: React.ReactNode
       url: string
     }>
-  }>
+  }> 
 }
 
 export function DocsTableOfContents({ toc }: DocsTableOfContentsProps) {
@@ -19,7 +19,7 @@ export function DocsTableOfContents({ toc }: DocsTableOfContentsProps) {
         <List size={16} className="text-neutral-400" />
         On this page
       </h4>
-      <ul className="space-y-1">
+      <ul className="space-y-1 ml-6 mt-3">
         {toc.map((item) => (
           <li key={item.url}>
             <a

@@ -6,6 +6,8 @@ description: Opinionated button styles for primary actions
 import { Button } from "@workspace/ui/components/ui/button"
 import { ButtonVariantPlayground } from "../../../components/docs/ButtonVarients"
 import { DocsPreview, DocsTable } from "../../../components/docspagescomponent/DocSurface"
+import { ComponentPreviewTabs } from "../../../components/docspagescomponent/ComponentPreview"
+import { ComponentSource } from "../../../components/docspagescomponent/ComponentSource"
 
 ## Preview
 
@@ -13,11 +15,13 @@ import { DocsPreview, DocsTable } from "../../../components/docspagescomponent/D
   component={<ButtonVariantPlayground />}
   source={
     <ComponentSource
-      src="components/docs/ButtonVarients.tsx"
+      src="src/components/docs/ButtonVarients.tsx"
       title="ButtonVariantPlayground.tsx"
       language="tsx"
     />
   }
+  className = "w-[55vw]"
+  align="center"
 />
 
 ## API Surface

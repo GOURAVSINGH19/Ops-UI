@@ -1,15 +1,14 @@
-import { NextResponse } from "next/server"
 import fs from "fs-extra"
 import path from "path"
 
-export async function POST(req) {
+export async function POST(req: any) {
     try {
         const body = await req.json()
         const { name, category, code, dependencies } = body
         console.log(body);
 
         if (!name || !category || !code) {
-            return NextResponse.json(
+            return req.json(
                 { error: "Missing required fields (name, category, or code)" },
                 { status: 400 }
             )
@@ -39,7 +38,7 @@ export async function POST(req) {
 
         console.log(`Component ${sanitizedName} registered successfully at ${componentDir}`)
 
-        return NextResponse.json({
+        return req.json({
             success: true,
             message: `Component ${sanitizedName} registered successfully.`,
             path: componentDir
@@ -47,8 +46,8 @@ export async function POST(req) {
 
     } catch (error) {
         console.error("Error registering component:", error)
-        return NextResponse.json(
-            { error: "Internal Server Error", details: error.message },
+        return req.json(
+            { error: "Internal Server Error", details: error || "error" },
             { status: 500 }
         )
     }

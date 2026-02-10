@@ -24,12 +24,14 @@ interface DocsSidebarNavProps {
 export function DocsSidebarNav({ items, className, setIsOpen }: DocsSidebarNavProps) {
   const { pathname } = useLocation();
   return items.length ? (
-    <div className={cn("w-full h-full min-h-screen dark:bg-[#191919] bg-white text-foreground", "pt-0 py-4 px-2", className)}>
+    <div className={cn("w-full h-full min-h-screen dark:bg-[#191919] bg-white text-foreground", "pt-0 py-4 px-1", className)}>
       <div className="w-full h-full px-4">
         <header className="w-full flex items-center justify-between mb-4">
           <div className="w-full h-full flex items-center gap-2">
-            <div className="w-4 h-4 bg-[#adfa1d] rounded-full"></div>
-            <span className="text-sm font-semibold text-foreground/90">Opsdocs</span>
+            <Link to="/" className="flex items-center gap-2">
+              <div className="w-5 h-5 bg-[#adfa1d] rounded-full"></div>
+              <span className="font-semibold text-foreground/90">Opsdocs</span>
+            </Link>
           </div>
           <PanelLeftClose
             onClick={() => setIsOpen(false)}
@@ -40,7 +42,7 @@ export function DocsSidebarNav({ items, className, setIsOpen }: DocsSidebarNavPr
         <div className="space-y-4">
           {items.map((section, index) => (
             <div key={index} className="space-y-1.5">
-              <h4 className="px-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground/70">
+              <h4 className="text-sm font-semibold uppercase tracking-tight text-neutral-200">
                 {section.title}
               </h4>
               <DocsSidebarNavItems items={section.items} pathname={pathname} />
@@ -74,7 +76,7 @@ function NavItem({ item, pathname, className }: NavItemProps) {
   if (hasChildren) {
     return (
       <div>
-        <span className={`flex w-full cursor-default items-center rounded-md text-[12px] font-medium `}>
+        <span className={`flex w-full cursor-default items-center rounded-md text-md text-neutral-200 font-medium `}>
           {item.title}
         </span>
         <div className={`ml-3 border-l border-border pl-3 text-xs ${isActive ? "text-white" : "light:text-[#1e1e1e]"}`}>

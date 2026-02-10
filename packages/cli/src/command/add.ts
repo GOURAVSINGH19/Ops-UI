@@ -18,7 +18,7 @@ const registrySchema = z.array(
     })
 )
 
-const REGISTRY_URL = "https://raw.githubusercontent.com/GOURAVSINGH19/Ops-Ui/main/apps/web/scripts/registry.json"
+const REGISTRY_URL = "https://raw.githubusercontent.com/GOURAVSINGH19/Ops-Ui/main/apps/docs/scripts/registry.json"
 
 export const add = new Command()
     .name("add")
@@ -32,7 +32,7 @@ export const add = new Command()
                 if (!response.ok) throw new Error("Remote registry not reachable")
                 registryRaw = await response.json()
             } catch (e) {
-                const localPath = "C:\\Users\\Gourav singh\\Desktop\\OPS-UI\\Ops-Ui\\apps\\web\\scripts\\registry.json"
+                const localPath = path.resolve(process.cwd(), "apps/docs/scripts/registry.json")
                 if (fs.existsSync(localPath)) {
                     registryRaw = await fs.readJSON(localPath)
                 } else {

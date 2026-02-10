@@ -5,7 +5,8 @@ import { cn } from "@workspace/ui/lib/utils"
 import axios from "axios"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { TableScehma, TableSchema } from "@/lib/Schema"
+import { TableScehma, TableSchema } from "../src/lib/Schema"
+import Navbar from "@/components/navbar/Navbar"
 
 const CATEGORIES = [
     { id: "ui", label: "UI Component", icon: Zap, color: "text-blue-400" },
@@ -52,7 +53,8 @@ const Template = () => {
 
     return (
         <section className="w-screen min-h-screen">
-            <div className="max-w-screen-xl w-full mx-auto py-20 px-6 space-y-12">
+            <Navbar />
+            <div className="max-w-screen-xl w-full mx-auto py-10 px-6 space-y-12">
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}

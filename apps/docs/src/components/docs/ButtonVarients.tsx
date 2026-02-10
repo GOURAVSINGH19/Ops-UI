@@ -1,8 +1,7 @@
-import React from "react"
 import { useState } from "react"
 import { Button } from "@workspace/ui/components/ui/button"
 import { cn } from "@workspace/ui/lib/utils"
-
+import React from "react"
 
 
 // Copy Button code in new component.
@@ -65,73 +64,71 @@ function Button({
 export { Button, buttonVariants } */}
 
 
-//  Sample
-
-const variants = [
-  "default",
-  "primary",
-  "destructive",
+const variants: Array<React.ComponentProps<typeof Button>["variant"]> = [
+    "default",
+    "primary",
+    "destructive",
 ]
 
-const Size = [
-  "default",
-  "sm",
-  "lg",
-  "icon"
+const Size: Array<React.ComponentProps<typeof Button>["size"]> = [
+    "default",
+    "sm",
+    "lg",
+    "icon"
 ]
 
 export function ButtonVariantPlayground() {
-  const [variant, setVariant] =
-    useState("default")
-  const [size, setSize] = useState("default")
+    const [variant, setVariant] =
+        useState<React.ComponentProps<typeof Button>["variant"]>("default")
+    const [size, setSize] = useState<React.ComponentProps<typeof Button>['size']>("default")
 
-  return (
-    <div className="flex w-full h-full flex-col gap-6 text-sm ">
-      <div className="flex flex-col md:flex-row flex-wrap gap-2">
-        <div className="flex flex-wrap gap-2">
-          {variants.map((option) => (
-            <button
-              key={option}
-              type="button"
-              onClick={() => setVariant(option)}
-              className={cn(
-                "rounded-full border cursor-pointer px-4 py-1 capitalize text-xs tracking-wider transition-colors",
-                option === variant
-                  ? "border-transparent bg-white text-neutral-900 shadow"
-                  : "border-white/20 text-neutral-200 hover:border-white/60"
-              )}
-              aria-pressed={option === variant}
-            >
-              {option}
-            </button>
-          ))}
+    return (
+        <div className="flex w-full h-full flex-col gap-6 text-sm ">
+            <div className="flex flex-col md:flex-row flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2">
+                    {variants.map((option) => (
+                        <button
+                            key={option}
+                            type="button"
+                            onClick={() => setVariant(option)}
+                            className={cn(
+                                "rounded-full border cursor-pointer px-4 py-1 capitalize text-xs tracking-wider transition-colors",
+                                option === variant
+                                    ? "border-transparent bg-white text-neutral-900 shadow"
+                                    : "border-white/20 text-neutral-200 hover:border-white/60"
+                            )}
+                            aria-pressed={option === variant}
+                        >
+                            {option}
+                        </button>
+                    ))}
+                </div>
+                <div className="w-[.5px] border border-zinc-800 bg-[var(--bg-light)]"></div>
+                <div className="flex flex-wrap gap-2">
+                    {
+                        Size.map((option) => (
+                            <button
+                                className={cn(
+                                    "rounded-full border cursor-pointer px-4 py-1 capitalize text-xs tracking-wider transition-colors",
+                                    option === size
+                                        ? "border-transparent bg-white text-neutral-900 shadow"
+                                        : "border-white/20 text-neutral-200 hover:border-white/60"
+                                )}
+                                key={option}
+                                type="button"
+                                onClick={() => setSize(option)}
+                                aria-pressed={option === size}
+                            >
+                                {option}
+                            </button>
+                        ))
+                    }</div>
+            </div>
+            <div className="flex flex-col items-center gap-2 rounded-xs p-8 text-center">
+                <Button variant={variant} size={size} className="mt-4 capitalize">
+                    {size === "icon" ? variant?.slice(0, 1) : variant}
+                </Button>
+            </div>
         </div>
-        <div className="w-[.5px] border border-zinc-800 bg-[var(--bg-light)]"></div>
-        <div className="flex flex-wrap gap-2">
-          {
-            Size.map((option) => (
-              <button
-                className={cn(
-                  "rounded-full border cursor-pointer px-4 py-1 capitalize text-xs tracking-wider transition-colors",
-                  option === size
-                    ? "border-transparent bg-white text-neutral-900 shadow"
-                    : "border-white/20 text-neutral-200 hover:border-white/60"
-                )}
-                key={option}
-                type="button"
-                onClick={() => setSize(option)}
-                aria-pressed={option === size}
-              >
-                {option}
-              </button>
-            ))
-          }</div>
-      </div>
-      <div className="flex flex-col items-center gap-2 rounded-xs p-8 text-center">
-        <Button className="mt-4 capitalize">
-          {size === "icon" ? variant?.slice(0, 1) : variant}
-        </Button>
-      </div>
-    </div>
-  )
+    )
 }

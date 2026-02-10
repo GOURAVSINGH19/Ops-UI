@@ -1,6 +1,6 @@
 import { SidebarNavItem } from "@/types/nav"
 import React from "react"
-import { IconCube, IconFile, IconFolders, IconSquareChartLine, IconStarSparkle } from "nucleo-glass"
+import { IconFile, IconFolders, IconStarSparkle } from "nucleo-glass"
 type CodeThemeName = "default" | "min" | "vitesse" | "slack" | "nord" | "dracula" | "one-dark-pro" | "catppuccin"
 
 interface DocsConfig {
@@ -31,20 +31,21 @@ export const docsConfig: DocsConfig = {
                     icon: <IconStarSparkle size={14} />
                 }
             ],
+            icon: <IconFile size={16} />
         },
         {
             title: "Components",
             items: [
                 {
+                    title: "Button",
+                    href: "/docs/components/button",
+                    items: [],
+                },
+                {
                     title: "Menu",
                     href: "/docs/components/menu",
                     items: [],
                 },
-                {
-                    title: "Topup",
-                    href: "/docs/components/Topup",
-                    items: [],
-                }
             ],
             icon: <IconFolders size={16} />
         },

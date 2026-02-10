@@ -1,7 +1,6 @@
 
 import * as React from "react"
-import Image from "next/image"
-import Link from "next/link"
+import { Link } from "react-router-dom"
 
 import { cn } from "@workspace/ui/lib/utils"
 import {
@@ -223,8 +222,8 @@ export const mdxComponents = {
     <img
       className={cn("mt-6 rounded-md border", className)}
       src={src || ""}
-      width={Number(width)}
-      height={Number(height)}
+      width={width}
+      height={height}
       alt={alt || ""}
       {...props}
     />
@@ -294,7 +293,7 @@ export const mdxComponents = {
       {...props}
     />
   ),
-  LinkedCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
+  LinkedCard: ({ className, ...props }: any) => (
     <Link
       className={cn(
         "bg-surface text-surface-foreground hover:bg-surface/80 flex w-full flex-col items-center rounded-xl p-6 transition-colors sm:p-10",

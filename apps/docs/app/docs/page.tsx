@@ -64,7 +64,7 @@ export default function Page() {
     return (
         <article
             data-slot="docs"
-            className={cn("flex flex-col w-full max-w-[900px] mx-auto gap-4 md:px-6 md:pt-6 xl:px-8 xl:pt-0 xl:layout:[--fd-toc-width:268px] lg:overflow-y-auto lg:h-screen")}
+            className={cn("flex flex-col max-w-screen mx-auto gap-4 md:px-6 md:pt-6 xl:px-2 xl:pt-0 xl:layout:[--fd-toc-width:268px] lg:overflow-y-auto lg:h-screen")}
         >
             <div className="flex min-w-0 flex-1 flex-col">
                 <div className="h-(--top-spacing) shrink-0" />
@@ -76,18 +76,18 @@ export default function Page() {
                                     <h1 className="scroll-m-20 text-2xl lg:text-4xl font-semibold tracking-tight sm:text-3xl xl:text-4xl">
                                         {doc.title}
                                     </h1>
-                                    <div className="docs-nav fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 px-6 py-4 backdrop-blur-sm static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none md:hidden">
+                                    <div className="docs-nav fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 px-6 py-4 backdrop-blur-sm static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">
                                         {neighbours.previous &&
                                             <Link to={neighbours.previous.url}>
-                                                <button className='rounded-full py-2 px-2 button-3 bg-white dark:bg-[var(--bg)] flex items-center gap-2 w-max dark:shadow-[var(--shadow-m)] cursor-pointer dark:hover:shadow-[var(--shadow-l)]'>
-                                                    <ArrowLeft className="w-3 h-3 text-neutral-400" />
+                                                <button className='rounded-full py-2 px-2 button-3 dark:bg-white bg-[var(--bg)] flex items-center gap-2 w-max shadow-[var(--shadow-m)] cursor-pointer hover:shadow-[var(--shadow-l)]'>
+                                                    <ArrowLeft className="w-3 h-3 dark:text-neutral-800 text-neutral-400" />
                                                 </button>
                                             </Link>
                                         }
                                         {neighbours.next &&
                                             <Link to={neighbours.next.url}>
-                                                <button className='rounded-full py-2 px-2  button-3 bg-white dark:bg-[var(--bg)] flex items-center gap-2 w-max dark:shadow-[var(--shadow-m)] cursor-pointer dark:hover:shadow-[var(--shadow-l)]'>
-                                                    <ArrowRight className="w-3 h-3 text-neutral-400" />
+                                                <button className='rounded-full py-2 px-2  button-3 dark:bg-white bg-[var(--bg)] flex items-center gap-2 w-max shadow-[var(--shadow-m)] cursor-pointer hover:shadow-[var(--shadow-l)]'>
+                                                    <ArrowRight className="w-3 h-3 dark:text-neutral-800 text-neutral-400" />
                                                 </button>
                                             </Link>}
                                     </div>

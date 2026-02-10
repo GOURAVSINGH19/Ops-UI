@@ -2,3 +2,33 @@
 title: "Menu"
 description: "Docs sidebar navigation with section labels and badges"
 ---
+
+import { DocsPreview, DocsTable } from "../../../components/docspagescomponent/DocSurface"
+import { MenuPreview } from "../../../components/docs/Menu"
+import { DocsSidebarNav } from "../../../Sidenav"
+import { ComponentSource } from "../../../components/docspagescomponent/ComponentSource"
+
+<Callout type="info" title="Navigation Structure">
+  The menu component supports nested navigation items and automatically highlights the active page based on the current URL.
+</Callout>
+
+## Preview
+
+<ComponentPreviewTabs
+  component={<MenuPreview />}
+  source={
+    <ComponentSource
+      src="src/components/docs/Menu.tsx"
+      title="Menu.tsx"
+      language="tsx"
+    />
+  }
+  className = "w-[55vw]"
+  align="center"
+/>
+
+## Accessibility
+
+- Links include focus states and rely on semantic `<a>` tags for screen-reader support.
+- Use descriptive titles for every nav item so the sidebar remains scannable.
+- Keep badge labels short (≤6 characters) to avoid truncation on narrow viewports.
