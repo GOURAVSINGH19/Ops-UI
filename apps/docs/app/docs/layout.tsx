@@ -19,7 +19,7 @@ export default function DocsLayout() {
 
 
   return (
-    <div className={cn("min-h-[100dvh] sidebar dark:bg-[var(--bg)]", "grid transition-[grid-template-columns] overflow-x-clip")}>
+    <div className={cn("min-h-[100dvh] sidebar dark:bg-[var(--bg)]", "overflow-x-clip")}>
       {!sidebarOpen && (
         <div data-sidebar-placeholder className="fixed flex top-[calc(1rem+var(--fd-docs-row-3,0px))] start-4 shadow-lg transition-opacity rounded-xl p-0.5 border dark:border-neutral-800 bg-white dark:bg-neutral-900 z-10 lg:block hidden">
           <div className="absolute start-0 inset-y-0 w-4"></div>
@@ -54,7 +54,7 @@ export default function DocsLayout() {
         </header>
       </div>
       <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
-      <Page />
+        <Page />
       <div className="hidden xl:block [grid-area:toc] h-screen w-[var(--fd-toc-width)]">
         <DocsTableOfContents toc={toc} />
       </div>

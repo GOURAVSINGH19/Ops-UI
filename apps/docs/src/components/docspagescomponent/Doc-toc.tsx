@@ -14,7 +14,7 @@ interface DocsTableOfContentsProps {
 
 export function DocsTableOfContents({ toc }: DocsTableOfContentsProps) {
   return (
-    <div className={cn("space-y-2 sticky top-12")}>
+    <div className={cn("space-y-2 sticky top-8")}>
       <h4 className="text-sm font-medium flex items-center gap-2">
         <List size={16} className="text-neutral-400" />
         On this page

@@ -64,12 +64,11 @@ export default function Page() {
     return (
         <article
             data-slot="docs"
-            className={cn("flex flex-col max-w-screen mx-auto gap-4 md:px-6 md:pt-6 xl:px-2 xl:pt-0 xl:layout:[--fd-toc-width:268px] lg:overflow-y-auto lg:h-screen")}
+            className={cn("flex flex-col flex-wrap max-w-screen mx-auto gap-4 md:pt-6 xl:pt-0 xl:layout:[--fd-toc-width:268px] lg:overflow-y-auto lg:h-screen relative overflow-hidden")}
         >
             <div className="flex min-w-0 flex-1 flex-col">
-                <div className="h-(--top-spacing) shrink-0" />
                 <div className="mx-auto flex w-full max-w-6xl min-w-0 flex-1 gap-8 px-0 py-0 lg:px-4 lg:py-6 text-neutral-800 lg:py-8 lg:px-4 dark:text-neutral-300">
-                    <div className="flex-1 px-6 py-6">
+                    <div className="flex-1 py-4">
                         <div className="flex flex-col gap-2">
                             <div className="flex flex-col gap-2">
                                 <div className="flex items-center justify-between">

@@ -46,6 +46,16 @@ export const docsConfig: DocsConfig = {
                     href: "/docs/components/menu",
                     items: [],
                 },
+                {
+                    title: "Table",
+                    href: "/docs/components/table",
+                    items: [],
+                },
+                {
+                    title: "Skeleton",
+                    href: "/docs/components/skeleton",
+                    items: [],
+                }
             ],
             icon: <IconFolders size={16} />
         },
