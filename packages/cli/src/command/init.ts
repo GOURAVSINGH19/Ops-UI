@@ -11,7 +11,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 `
 
-const REGISTRY_URL = "https://raw.githubusercontent.com/GOURAVSINGH19/Ops-Ui/main/apps/docs/src"
+const REGISTRY_URL = "https://raw.githubusercontent.com/GOURAVSINGH19/Ops-Ui/main/apps/docs"
 const TYPES_URL = `${REGISTRY_URL}/types/`
 
 
@@ -54,23 +54,38 @@ export const init = new Command()
                 console.log("! lib/utils.ts already exists, skipping")
             }
 
-            const typePath = path.join(typesDir, "Types.tsx")
-            if (!fs.existsSync(typePath)) {
-                console.log("Fetching types...")
-                try {
-                    const typesResponse = await fetch(TYPES_URL)
-                    if (!typesResponse.ok) {
-                        throw new Error(`Failed to fetch types: ${typesResponse.statusText}`)
-                    }
-                    const content = await typesResponse.text()
-                    await fs.writeFile(typePath, content)
-                    console.log("✓ Created types/Types.tsx")
-                } catch (err) {
-                    console.error("! Could not fetch types from remote.")
-                    throw err
+            console.log("Fetching types manifest...")
+            try {
+                const typesJsonURL = `${REGISTRY_URL}/scripts/types.json`
+                const typesJsonResponse = await fetch(typesJsonURL)
+                if (!typesJsonResponse.ok) {
+                    throw new Error(`Failed to fetch types manifest: ${typesJsonResponse.statusText}`)
                 }
-            } else {
-                console.log("! types/Types.tsx already exists, skipping")
+                const typeFiles = await typesJsonResponse.json() as string[]
+
+                for (const file of typeFiles) {
+                    const typePath = path.join(typesDir, file)
+                    if (!fs.existsSync(typePath)) {
+                        console.log(`Fetching ${file}...`)
+                        try {
+                            const typesResponse = await fetch(`${TYPES_URL}${file}`)
+                            if (!typesResponse.ok) {
+                                throw new Error(`Failed to fetch ${file}: ${typesResponse.statusText}`)
+                            }
+                            const content = await typesResponse.text()
+                            await fs.writeFile(typePath, content)
+                            console.log(`✓ Created types/${file}`)
+                        } catch (err) {
+                            console.error(`! Could not fetch ${file} from remote.`)
+                            throw err
+                        }
+                    } else {
+                        console.log(`! types/${file} already exists, skipping`)
+                    }
+                }
+            } catch (err) {
+                console.error("! Could not fetch types manifest. Falling back to default types.")
+                // Optional: add fallback hardcoded list if manifest fails
             }
 
             const configPath = path.join(projectRoot, "components.json")
