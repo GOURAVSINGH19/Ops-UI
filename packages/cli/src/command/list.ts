@@ -12,21 +12,34 @@ const registrySchema = z.array(
 
 const REGISTRY_URL = "https://raw.githubusercontent.com/GOURAVSINGH19/Ops-Ui/main/apps/docs/scripts/registry.json"
 
+async function findRoot(startDir: string): Promise<string | null> {
+    let currentDir = startDir
+    while (currentDir !== path.parse(currentDir).root) {
+        if (await fs.pathExists(path.join(currentDir, "pnpm-workspace.yaml"))) {
+            return currentDir
+        }
+        currentDir = path.dirname(currentDir)
+    }
+    return null
+}
+
 export const list = new Command()
     .name("list")
     .description("List all available components")
     .action(async () => {
         try {
             let registryRaw;
-            try {
-                const response = await fetch(REGISTRY_URL)
-                if (!response.ok) throw new Error("Remote registry not reachable")
-                registryRaw = await response.json()
-            } catch (e) {
-                const localPath = path.resolve(process.cwd(), "apps/docs/scripts/registry.json")
-                if (fs.existsSync(localPath)) {
-                    registryRaw = await fs.readJSON(localPath)
-                } else {
+            const root = await findRoot(process.cwd())
+            const localPath = root ? path.join(root, "apps/docs/scripts/registry.json") : null
+
+            if (localPath && await fs.pathExists(localPath)) {
+                registryRaw = await fs.readJSON(localPath)
+            } else {
+                try {
+                    const response = await fetch(REGISTRY_URL)
+                    if (!response.ok) throw new Error("Remote registry not reachable")
+                    registryRaw = await response.json()
+                } catch (e) {
                     console.error("Could not fetch registry from remote or find it locally.")
                     process.exit(1)
                 }
