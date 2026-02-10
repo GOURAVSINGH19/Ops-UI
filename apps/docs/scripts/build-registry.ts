@@ -3,7 +3,9 @@ import path from "path"
 import { components } from "../registry/components"
 
 const SRC_DIR = path.join(process.cwd(), "src")
+const TYPES_DIR = path.join(process.cwd(), "types")
 const OUTPUT_FILE = path.join(process.cwd(), "scripts", "registry.json")
+const TYPES_OUTPUT_FILE = path.join(process.cwd(), "scripts", "types.json")
 
 async function buildRegistry() {
     console.log("Building registry from config...")
@@ -38,8 +40,15 @@ async function buildRegistry() {
 
         await fs.ensureDir(path.dirname(OUTPUT_FILE))
         await fs.writeFile(OUTPUT_FILE, JSON.stringify(filteredRegistry, null, 2))
-
         console.log(`Registry built with ${filteredRegistry.length} components at ${OUTPUT_FILE}`)
+
+        // Build Types Registry
+        if (await fs.pathExists(TYPES_DIR)) {
+            const typeFiles = await fs.readdir(TYPES_DIR)
+            const filteredTypeFiles = typeFiles.filter(file => file.endsWith(".ts") || file.endsWith(".tsx"))
+            await fs.writeFile(TYPES_OUTPUT_FILE, JSON.stringify(filteredTypeFiles, null, 2))
+            console.log(`Types manifest built with ${filteredTypeFiles.length} files at ${TYPES_OUTPUT_FILE}`)
+        }
     } catch (error) {
         console.error("Failed to build registry:", error)
         throw error
