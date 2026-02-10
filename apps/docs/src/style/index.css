@@ -175,6 +175,7 @@ body {
   overflow-x: hidden;
   scroll-behavior: smooth;
   scrollbar-width: none;
+  background-color: #121212;
 }
 
 ::-webkit-scrollbar {

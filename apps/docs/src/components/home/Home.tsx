@@ -48,7 +48,7 @@ const Home = () => {
                 }}
             >
                 <motion.div variants={buttonVariants}>
-                    <Link to="/docs">
+                    <Link to="/docs/introduction">
                         <button className='px-8 ring-1 ring-white/50 bg-[#fff] dark:ring-[.5px] dark:ring-white/20 dark:bg-[var(--bg)] hover:bg-neutral-50 py-2 text-sm  rounded-full flex items-start gap-2 w-max shadow-[var(--shadow-m)] hover:shadow-[var(--shadow-s)] cursor-pointer dark:text-white duration-600 ease-inOut'>
                             Get Started
                         </button>

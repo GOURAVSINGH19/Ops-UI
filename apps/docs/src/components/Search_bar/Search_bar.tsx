@@ -1,9 +1,9 @@
 import React, { Dispatch, SetStateAction, useEffect, useRef, useState, useMemo } from 'react'
 import { ArrowRight, X, CornerUpLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { docsConfig } from '@/config/docs';
-import { SidebarNavItem } from '../../types/nav';
+import { SidebarNavItem } from '../../../types/nav';
 
 const Search_bar = ({ Open }: { Open: Dispatch<SetStateAction<boolean>> }) => {
     const [Search, setSearch] = useState('');
@@ -133,10 +133,10 @@ const Search_bar = ({ Open }: { Open: Dispatch<SetStateAction<boolean>> }) => {
                     ) : (
                         <>
                             <h1 className='text-md mb-2'>Pages</h1>
-                            {docsConfig.sidebarNav.map((section) => (
+                            {docsConfig.sidebarNav.map((section: any) => (
                                 <div key={section.title} className='w-full mb-2'>
                                     <h2 className='text-xs text-[#ffffff68] mb-2 uppercase tracking-wider'>{section.title}</h2>
-                                    {section.items.filter(item => item.href).map((item) => (
+                                    {section.items.filter((item: any) => item.href).map((item: any) => (
                                         <Link
                                             key={item.href}
                                             to={item.href!}

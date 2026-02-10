@@ -35,9 +35,9 @@ const Navbar = () => {
                     <Link to="/docs/introduction" className="font-medium text-sm">
                         Docs
                     </Link>
-                    <Link to="/template" className="font-medium text-sm">
+                    {/* <Link to="/template" className="font-medium text-sm">
                         Template
-                    </Link>
+                    </Link> */}
                 </div>
                 <div className="flex items-center gap-4 w-2/3 justify-end px-4">
                     <button onClick={() => setOpen(!Open)} className="flex ring-[.5px] ring-white/30 hover:ring-white/10 transition-all duration-300 ease-inOut hover:scale-[.986] justify-between cursor-pointer relative items-center w-42 h-[2em] dark:bg-[var(--bg)] shadow-[var(--shadow-s)] rounded-md  px-[1rem] py-[1rem] outline-0 text-sm " >

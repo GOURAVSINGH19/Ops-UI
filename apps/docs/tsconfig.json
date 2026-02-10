@@ -17,7 +17,8 @@
         "eslint.config.js",
         "src/main.tsx",
         "App.tsx",
-        "source.config.ts"
+        "source.config.ts",
+        "types"
     ],
     "exclude": [
         "node_modules"

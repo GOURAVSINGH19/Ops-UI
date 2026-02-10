@@ -1,4 +1,4 @@
-import { SidebarNavItem } from "@/types/nav"
+import { SidebarNavItem } from "../../types/nav"
 import React from "react"
 import { IconFile, IconFolders, IconStarSparkle } from "nucleo-glass"
 type CodeThemeName = "default" | "min" | "vitesse" | "slack" | "nord" | "dracula" | "one-dark-pro" | "catppuccin"
@@ -36,16 +36,6 @@ export const docsConfig: DocsConfig = {
         {
             title: "Components",
             items: [
-                {
-                    title: "Button",
-                    href: "/docs/components/button",
-                    items: [],
-                },
-                {
-                    title: "Menu",
-                    href: "/docs/components/menu",
-                    items: [],
-                },
                 {
                     title: "Table",
                     href: "/docs/components/table",

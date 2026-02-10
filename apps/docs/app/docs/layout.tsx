@@ -9,7 +9,7 @@ import { cn } from "@/lib/cn"
 
 
 export default function DocsLayout() {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(true)
   const params = useParams()
   const slug = params["*"] ? params["*"]?.split('/') : []
   const page = source.getPage(slug)

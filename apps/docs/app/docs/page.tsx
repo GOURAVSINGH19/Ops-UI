@@ -68,7 +68,7 @@ export default function Page() {
         >
             <div className="flex min-w-0 flex-1 flex-col">
                 <div className="mx-auto flex w-full max-w-6xl min-w-0 flex-1 gap-8 px-0 py-0 lg:px-4 lg:py-6 text-neutral-800 lg:py-8 lg:px-4 dark:text-neutral-300">
-                    <div className="flex-1 py-4">
+                    <div className="flex-1 py-4 px-10">
                         <div className="flex flex-col gap-2">
                             <div className="flex flex-col gap-2">
                                 <div className="flex items-center justify-between">

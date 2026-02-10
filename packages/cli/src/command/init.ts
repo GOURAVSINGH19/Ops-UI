@@ -12,7 +12,7 @@ export function cn(...inputs: ClassValue[]) {
 `
 
 const REGISTRY_URL = "https://raw.githubusercontent.com/GOURAVSINGH19/Ops-Ui/main/apps/docs/src"
-const TYPES_URL = `${REGISTRY_URL}/types`
+const TYPES_URL = `${REGISTRY_URL}/types/`
 
 
 export const init = new Command()

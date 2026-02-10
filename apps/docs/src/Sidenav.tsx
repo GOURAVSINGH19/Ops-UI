@@ -2,7 +2,7 @@ import React from "react"
 import Link from "next/link"
 import { cn } from "@workspace/ui/lib/utils"
 import { useLocation } from "react-router-dom";
-import { SidebarNavItem } from "./types/nav";
+import { SidebarNavItem } from "../types/nav";
 
 export interface DocsSidebarNavProps {
   items: SidebarNavItem[],

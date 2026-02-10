@@ -2,7 +2,7 @@ import React from "react"
 import { Link, useLocation } from "react-router-dom"
 import { cn } from "@workspace/ui/lib/utils"
 import { PanelLeftClose } from "lucide-react";
-import type { NavItem } from "../../types/nav"
+import type { NavItem } from "../../../types/nav"
 
 interface NavSection {
   title: string
@@ -24,7 +24,7 @@ interface DocsSidebarNavProps {
 export function DocsSidebarNav({ items, className, setIsOpen }: DocsSidebarNavProps) {
   const { pathname } = useLocation();
   return items.length ? (
-    <div className={cn("w-full h-full min-h-screen dark:bg-[#191919] bg-white text-foreground", "pt-0 py-4 px-1", className)}>
+    <div className={cn("w-full h-full min-h-screen dark:bg-[#121212] bg-white text-foreground", "pt-0 py-4 px-1", className)}>
       <div className="w-full h-full px-4">
         <header className="w-full flex items-center justify-between mb-4">
           <div className="w-full h-full flex items-center gap-2">

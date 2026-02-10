@@ -3,7 +3,7 @@ import { ArrowDown, ArrowUp, ArrowUpFromLine, ChevronDown, ChevronRight } from "
 import { cn } from "@workspace/ui/lib/utils";
 import { Link } from "react-router-dom";
 import Skeleton from "./Skeleton";
-import { TableProps } from "@/types/Table";
+import { TableProps } from "../../../types/Table";
 // import {
 //     IconButton,
 //     Tooltip
