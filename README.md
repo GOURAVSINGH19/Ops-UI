@@ -68,12 +68,7 @@ Before getting started, ensure you have:
 
 - **Node.js** ≥ 18.0.0
 - **pnpm** ≥ 10.0.0
-
-Enable pnpm with Corepack:
-```bash
-corepack enable pnpm
-```
-
+- 
 ### Installation
 
 1. **Clone the repository**
@@ -134,20 +129,20 @@ pnpm check-types
 The project includes a custom CLI (`opscli`) for managing components.
 
 ```bash
-# Register the CLI locally
-pnpm --filter opscli build
-
-# Use via pnpm
-pnpm opscli --help
+# Installation the CLI locally
+npm i @demouser22/opscli
 
 # Initialize a new project piece
-pnpm opscli init
+opscli init
 
 # Add a component from registry
-pnpm opscli add <component-name>
+opscli add <component-name>
 
 # List all available components
-pnpm opscli list
+opscli list
+
+# Help
+opscli help
 ```
 
 ---
@@ -172,9 +167,7 @@ The `opscli` package provides a set of commands to streamline the development pr
 ### Currently Documented
 
 - **Button** - Highly customizable button component.
-- **Menu** - Flexible navigation menu.
-- **Accordion** - Expandable content sections.
-- **Alert** - Feedback messages.
+- **Table** - Highly customizable Table component.
 - **Dropdown** - Contextual menus.
 - ... and more in `packages/ui/src/components/ui`
 
