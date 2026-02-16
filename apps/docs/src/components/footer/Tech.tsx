@@ -1,12 +1,12 @@
-import { Icons, NextjsIcon } from '@workspace/ui/components/ui/icons';
+import { Icons, ReactIcon } from '@workspace/ui/components/ui/icons';
 import React from 'react';
 
 export const Techsection = () => {
     return (
         <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mt-20 mb-10 w-full p-3">
             <div className="flex items-center gap-2 rounded-full border border-border bg-background/50 px-4 py-2 backdrop-blur-sm">
-                <NextjsIcon className="size-4 text-neutral-200" aria-hidden="true" />
-                <span className="text-sm font-medium">Next.js</span>
+                <ReactIcon className="size-4 text-white dark:text-neutral-200" aria-hidden="true" />
+                <span className="text-sm font-medium">React.js</span>
             </div>
 
             <div className="flex items-center gap-2 rounded-full border border-border bg-background/50 px-4 py-2 backdrop-blur-sm">

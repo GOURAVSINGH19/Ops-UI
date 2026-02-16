@@ -45,7 +45,57 @@ export const docsConfig: DocsConfig = {
                     title: "Skeleton",
                     href: "/docs/components/skeleton",
                     items: [],
-                }
+                },
+                {
+                    title: "FilterChip",
+                    href: "/docs/components/filterchip",
+                    items: [],
+                },
+                {
+                    title: "Cards",
+                    href: "/docs/components/cards",
+                    items: [],
+                },
+                {
+                    title: "SpiderView",
+                    href: "/docs/components/spiderview",
+                    items: [],
+                },
+                {
+                    title: "Filters",
+                    href: "/docs/components/filters",
+                    items: [],
+                },
+                {
+                    title: "Chatbot",
+                    href: "/docs/components/chatbot",
+                    items: [],
+                },
+                {
+                    title: "Header",
+                    href: "/docs/components/header",
+                    items: [],
+                },
+                {
+                    title: "Pagination",
+                    href: "/docs/components/pagination",
+                    items: [],
+                },
+                {
+                    title: "Sidebar",
+                    href: "/docs/components/sidebar",
+                    items: [],
+                },
+                {
+                    title: "Timeline",
+                    href: "/docs/components/timeline",
+                    items: [],
+                },
+                {
+                    title: "Toggle",
+                    href: "/docs/components/toggle",
+                    items: [],
+                },
             ],
             icon: <IconFolders size={16} />
         },

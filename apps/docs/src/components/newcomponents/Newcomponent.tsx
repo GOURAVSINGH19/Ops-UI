@@ -1,36 +1,66 @@
 import React from "react"
 import { motion } from "framer-motion";
-import { cn } from "@workspace/ui/lib/utils";
-import { Button } from "@workspace/ui/components/ui/button";
 
 const LatestComponent = () => {
+    const bentoItems = [
+        {
+            title: "Performance",
+            description: "Lightning fast components optimized for speed.",
+            className: "md:col-span-3 md:row-span-2 bg-gradient-to-br from-blue-500/50 to-cyan-500/10",
+            icon: "🚀"
+        },
+        {
+            title: "Customizable",
+            description: "Easily tweak styles to match your brand.",
+            className: "md:col-span-3 md:row-span-2 bg-gradient-to-br from-purple-500/10 to-pink-500/10",
+            icon: "🎨"
+        },
+        {
+            title: "Accessibility",
+            description: "Built with a11y in mind for every user.",
+            className: "md:col-span-3 md:row-span-2 bg-gradient-to-br from-orange-500/10 to-yellow-500/10",
+            icon: "♿"
+        },
+        {
+            title: "Responsive",
+            description: "Looks great on any screen size.",
+            className: "md:col-span-3 md:row-span-2 bg-gradient-to-br from-green-500/10 to-emerald-500/10",
+            icon: "📱"
+        }
+    ];
+
     return (
-        <motion.section
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="mx-auto w-[40vw] space-y-4 h-60 md:block mt-10 relative z-[10]"
+        <section
+            className="w-full max-w-screen-md mx-auto px-4 py-20 relative"
         >
-            <div
-                className={cn(
-                    "mx-auto overflow-hidden relative w-full h-full bg-neutral-50/80 border-[.5px] border-[#FDFDFD] ring-1 rounded-md"
-                )}
-            >
-                <div className="relative flex flex-col">
-                    <div className="inline-flex items-center gap-2 px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground absolute left-4 top-6 rounded-[14px] border border-black/10 text-base md:left-6">
-                        <img src="./open.svg" alt="svg" width={14} height={14} />
-                        <h4 className="text-black">New component</h4>
-                    </div>
-                    <div className="flex flex-col justify-start pb-2 pl-4 pt-14 md:items-start mt-4 ml-2"></div>
-                </div>
-                <div className="mx-auto w-full lg:w-[40vw] flex justify-center items-center">
-                    <Button variant="default">
-                        Add Component
-                    </Button>
-                </div>
+            <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 dark:text-white">Our Features</h2>
+                <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+                    Explore the power of our component library tailored for modern web development.
+                </p>
             </div>
-        </motion.section>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[180px]">
+                {bentoItems.map((item, index) => (
+                    <div
+                        key={index}
+                        className={`group relative overflow-hidden rounded-sm border border-black/5 dark:border-white/10 p-6 flex flex-col justify-between backdrop-blur-sm transition-all ${item.className}`}
+                    >
+                        <div className="absolute -right-4 -top-4 text-6xl opacity-10 grayscale  transition-all duration-500">
+                            {item.icon}
+                        </div>
+
+                        <div>
+                            <div className="text-2xl mb-4">{item.icon}</div>
+                            <h3 className="text-xl font-bold mb-2 dark:text-white">{item.title}</h3>
+                            <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                                {item.description}
+                            </p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
     );
 };
 

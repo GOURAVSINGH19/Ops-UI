@@ -1,7 +1,7 @@
 import React from "react"
 import { FolderKanban, UserRoundPen } from 'lucide-react';
 import { useEffect, useState } from 'react'
-import Table from '../docs/Table';
+import Table from '../components/docs/Table';
 
 const DempTable = () => {
     const [accounts, setAccounts] = useState([]);

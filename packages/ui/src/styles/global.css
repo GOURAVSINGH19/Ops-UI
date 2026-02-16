@@ -9,6 +9,7 @@
 @source "../**/*.{ts,tsx}";
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant light (&:is( !.dark *));
 
 * {
   font-family: Geist, sans-serif;
@@ -51,7 +52,7 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: oklch(1 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.145 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -128,13 +129,14 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
 
 :root {
-  --foreground: #121212;
+  --foreground: #ededed;
   --bg-dark: oklch(0.1 0 264);
   --bg-light: oklch(0.3 0 264);
   --bg: oklch(0.2 0 264);
@@ -159,14 +161,12 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: var(--bg);
+    --background: var(--background);
     --foreground: #ededed;
   }
 }
 
 body {
-  background: var(--bg);
-  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -193,12 +193,10 @@ body {
   left: -2px;
   width: calc(100% + 4px);
   height: calc(100% + 4px);
-  background: linear-gradient(
-    to left,
-    var(--colora) 35%,
-    var(--colora2) 80%,
-    var(--colora) 108%
-  );
+  background: linear-gradient(to left,
+      var(--colora) 35%,
+      var(--colora2) 80%,
+      var(--colora) 108%);
   z-index: 0;
   border-radius: 8px;
   background-size: 200% auto;

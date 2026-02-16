@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Page from "./page"
 import { Sidebar } from "./Sidebar"
 import { ChevronDown, Circle, PanelRightClose, Search } from "lucide-react"
@@ -16,10 +16,20 @@ export default function DocsLayout() {
   //@ts-ignore
   const toc = page?.data?.toc ?? []
 
-
-
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 900) {
+        setSidebarOpen(false)
+      } else {
+        setSidebarOpen(true)
+      }
+    }
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
   return (
-    <div className={cn("min-h-[100dvh] sidebar dark:bg-[var(--bg)]", "overflow-x-clip")}>
+    <div className={cn("min-h-[100dvh] sidebar dark:bg-[var(--bg)] bg-neutral-100", "overflow-x-clip")}>
       {!sidebarOpen && (
         <div data-sidebar-placeholder className="fixed flex top-[calc(1rem+var(--fd-docs-row-3,0px))] start-4 shadow-lg transition-opacity rounded-xl p-0.5 border dark:border-neutral-800 bg-white dark:bg-neutral-900 z-10 lg:block hidden">
           <div className="absolute start-0 inset-y-0 w-4"></div>
@@ -44,7 +54,7 @@ export default function DocsLayout() {
           <Search />
         </button>
       </div>
-      <div className="fixed w-full top-[var(--fd-docs-row-2)] z-10 [grid-area:toc-popover] h-(--fd-toc-popover-height) lg:hidden max-lg:h:[--fd-toc-popover-height:--spacing(10)]">
+      <div className="fixed w-full top-[var(--fd-docs-row-2)] z-10 [grid-area:toc-popover] h-(--fd-toc-popover-height) xl:hidden max-lg:h:[--fd-toc-popover-height:--spacing(10)]">
         <header className="border-b backdrop-blur-sm transition-colors bg-fd-background/80">
           <button className="flex w-full h-10 items-center text-sm text-fd-muted-foreground gap-2.5 px-4 py-2.5 text-start focus-visible:outline-none [&_svg]:size-4 md:px-6">
             <Circle size={16} />
@@ -54,8 +64,8 @@ export default function DocsLayout() {
         </header>
       </div>
       <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
-        <Page />
-      <div className="hidden xl:block [grid-area:toc] h-screen w-[var(--fd-toc-width)]">
+      <Page />
+      <div className="hidden xl:block px-4 [grid-area:toc] h-screen w-[var(--fd-toc-width)]">
         <DocsTableOfContents toc={toc} />
       </div>
     </div>

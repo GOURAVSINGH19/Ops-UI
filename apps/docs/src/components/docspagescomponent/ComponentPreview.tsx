@@ -32,8 +32,8 @@ export function ComponentPreviewTabs({
         <div className="flex items-center justify-between">
           {!hideCode && (
             <TabsList>
-              <TabsTrigger className="cursor-pointer" value="preview">Preview</TabsTrigger>
-              <TabsTrigger className="cursor-pointer" value="code">Code</TabsTrigger>
+              <TabsTrigger className="cursor-pointer dark:text-white text-neutral-900" value="preview">Preview</TabsTrigger>
+              <TabsTrigger className="cursor-pointer dark:text-white text-neutral-900" value="code">Code</TabsTrigger>
             </TabsList>
           )}
         </div>

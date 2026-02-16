@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom"
 import { cn } from "@workspace/ui/lib/utils"
 import { PanelLeftClose } from "lucide-react";
 import type { NavItem } from "../../../types/nav"
+import { IconStarSparkle } from "nucleo-glass";
 
 interface NavSection {
   title: string
@@ -24,25 +25,30 @@ interface DocsSidebarNavProps {
 export function DocsSidebarNav({ items, className, setIsOpen }: DocsSidebarNavProps) {
   const { pathname } = useLocation();
   return items.length ? (
-    <div className={cn("w-full h-full min-h-screen dark:bg-[#121212] bg-white text-foreground", "pt-0 py-4 px-1", className)}>
+    <div className={cn("w-full h-full min-h-screen text-[#1e1e1e]", "pt-0 py-4 px-1", className)}>
       <div className="w-full h-full px-4">
         <header className="w-full flex items-center justify-between mb-4">
           <div className="w-full h-full flex items-center gap-2">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-5 h-5 bg-[#adfa1d] rounded-full"></div>
-              <span className="font-semibold text-foreground/90">Opsdocs</span>
+              <IconStarSparkle size={18} style={{
+                '--nc-gradient-1-color-1': '#b95959ff',
+                '--nc-gradient-2-color-2': "pink",
+              } as React.CSSProperties}
+              className="mb-1"
+              />
+              <span className="font-semibold text-lg uppercase tracking-tight dark:text-white text-black">Opsdocs</span>
             </Link>
           </div>
           <PanelLeftClose
             onClick={() => setIsOpen(false)}
             size={16}
-            className="cursor-pointer text-neutral-500 hover:text-foreground transition-colors"
+            className="cursor-pointer text-neutral-500 transition-colors"
           />
         </header>
         <div className="space-y-4">
           {items.map((section, index) => (
             <div key={index} className="space-y-1.5">
-              <h4 className="text-sm font-semibold uppercase tracking-tight text-neutral-200">
+              <h4 className="text-sm font-semibold uppercase tracking-tight dark:text-neutral-200">
                 {section.title}
               </h4>
               <DocsSidebarNavItems items={section.items} pathname={pathname} />
@@ -93,7 +99,7 @@ function NavItem({ item, pathname, className }: NavItemProps) {
         className={cn(
           "group flex w-full items-center rounded-md border border-transparent px-2 py-1",
           item.disabled && "cursor-not-allowed opacity-60",
-          isActive ? "font-medium text-white" : "text-zinc-400",
+          isActive ? "font-medium dark:text-white text-neutral-900" : "text-zinc-500",
           className
         )}
         target={item.external ? "_blank" : ""}

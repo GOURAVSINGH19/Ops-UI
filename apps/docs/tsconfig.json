@@ -18,7 +18,20 @@
         "src/main.tsx",
         "App.tsx",
         "source.config.ts",
-        "types"
+        "types",
+        "Usage/Cards.tsx",
+        "Usage/Chatbot.tsx",
+        "Usage/Filterchip.tsx",
+        "Usage/Filters.tsx",
+        "Usage/Header.tsx",
+        "Usage/MultipleFilter.tsx",
+        "Usage/Pagination.tsx",
+        "Usage/Sidebar.tsx",
+        "Usage/Skeleton.tsx",
+        "Usage/SpiderView.tsx",
+        "Usage/Table.tsx",
+        "Usage/Timeline.tsx",
+        "Usage/Toggle.tsx"
     ],
     "exclude": [
         "node_modules"

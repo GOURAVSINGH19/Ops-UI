@@ -5,7 +5,6 @@ import { lucideIconsPlugin } from 'fumadocs-core/source/lucide-icons';
 const pages = import.meta.glob('../content/docs/**/*.mdx', { eager: true });
 // @ts-ignore
 const metas = import.meta.glob('../content/docs/**/meta.json', { eager: true });
-console.log(pages, metas)
 function createSource(pages: any, metas: any) {
   const files: any[] = [];
 

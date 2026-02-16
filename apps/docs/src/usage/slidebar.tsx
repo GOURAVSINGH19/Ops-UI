@@ -1,7 +1,5 @@
-''
-
 import React, { useLayoutEffect, useRef, useState } from "react"
-import Link from "next/link"
+import { Link } from "react-router-dom"
 import { motion } from "motion/react"
 import { cn } from "@workspace/ui/lib/utils"
 import { IconShopping, IconSidebarLeftShow } from "nucleo-glass"
@@ -73,7 +71,7 @@ const NavbarLinks: React.FC<NavbarLinksProps> = ({ items = itemsdata, className,
                     >
                         {item.icon && <span>{item.icon}</span>}
                         {item.href ? (
-                            <Link href={item.href} className="z-10">
+                            <Link to={item.href} className="z-10">
                                 {item.title}
                             </Link>
                         ) : (

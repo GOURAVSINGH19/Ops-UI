@@ -9,7 +9,7 @@ interface DocsTableOfContentsProps {
       title: React.ReactNode
       url: string
     }>
-  }> 
+  }>
 }
 
 export function DocsTableOfContents({ toc }: DocsTableOfContentsProps) {
@@ -25,7 +25,7 @@ export function DocsTableOfContents({ toc }: DocsTableOfContentsProps) {
             <a
               href={item.url}
               className={cn(
-                "block text-sm text-muted-foreground hover:text-foreground transition-colors"
+                "block text-sm text-muted-foreground transition-colors"
               )}
             >
               {item.title}

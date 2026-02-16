@@ -1,6 +1,6 @@
 import React from "react"
 import { DocsSidebarNav } from "../Sidenav"
-import type { SidebarNavItem } from "../types/nav"
+import type { SidebarNavItem } from "../../types/nav"
 import { cn } from "@workspace/ui/lib/utils"
 
 const basicNav: SidebarNavItem[] = [

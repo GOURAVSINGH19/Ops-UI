@@ -7,11 +7,11 @@ import Navbar from "../navbar/Navbar";
 
 const ComponentLibraryDemo = () => {
     return (
-        <main className="w-screen h-full bg_svg">
+        <main className="w-screen h-full dark:bg-[var(--bg)] bg-neutral-100">
             <Navbar />
-            <div className=" z-[10] max-w-screen-sm w-full md:max-w-screen-xl mx-auto md:p-[.8rem] px-[.5rem] md:px-[2rem]">
+            <div className=" text-landing-foreground pt-4 pb-6 lg:px-2 dark:text-landing-foreground-dark md:pb-12">
                 <Home />
-                <LatestComponent />
+                {/* <LatestComponent /> */}
                 <Techsection />
                 <Footer />
             </div>
