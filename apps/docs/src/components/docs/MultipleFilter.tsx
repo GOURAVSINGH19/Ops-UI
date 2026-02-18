@@ -54,7 +54,7 @@ const Upgradefilter = ({
         <div className="relative" ref={dropdownRef}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center justify-between w-[180px] px-4 py-1.5 text-sm bg-white/50 hover:bg-white/80 backdrop-blur-sm text-slate-600 rounded-lg shadow-sm cursor-pointer outline:none select-none"
+                className="flex items-center justify-between w-45 px-4 py-1.5 text-sm bg-white  backdrop-blur-sm text-black rounded-lg shadow-sm cursor-pointer outline:none select-none"
             >
                 <span>{defaultLabel}</span>
                 {totalSelected > 0 && (
@@ -68,7 +68,7 @@ const Upgradefilter = ({
             </button>
 
             {isOpen && (
-                <div className="absolute z-50 mt-2 w-[260px] bg-white rounded-xl shadow-xl cursor-pointer">
+                <div className="absolute z-50 mt-2 w-65 bg-white rounded-xl shadow-xl cursor-pointer">
                     {filterOptions.map((group) => (
                         <div key={group.key}>
                             <p className="px-4 py-2 text-xs font-semibold text-black">

@@ -24,6 +24,7 @@ async function buildRegistry() {
             return {
                 name: component.id,
                 type: "components:ui",
+                version: component.version || "1.0.0",
                 files: [
                     {
                         path: component.source.path,
@@ -31,7 +32,8 @@ async function buildRegistry() {
                     }
                 ],
                 dependencies: component.dependencies || [],
-                registryDependencies: []
+                registryDependencies: [],
+                metadata: component.metadata || {}
             }
         }))
 

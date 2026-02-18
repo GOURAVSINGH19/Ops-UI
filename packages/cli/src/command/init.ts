@@ -89,10 +89,12 @@ export const init = new Command()
             }
 
             const configPath = path.join(projectRoot, "components.json")
+            const uiConfigPath = path.join(projectRoot, "ui.config.ts")
+
             const config = {
                 "style": "default",
                 "tailwind": {
-                    "config": "tailwind.config.js",
+                    "config": fs.existsSync(path.join(projectRoot, "tailwind.config.js")) ? "tailwind.config.js" : "tailwind.config.ts",
                     "css": "app/globals.css",
                     "baseColor": "zinc",
                     "cssVariables": true
@@ -105,6 +107,24 @@ export const init = new Command()
 
             await fs.writeJSON(configPath, config, { spaces: 2 })
             console.log("✓ Created components.json")
+
+            const uiConfigContent = `import { defineConfig } from "./types/config"
+
+export default defineConfig({
+  theme: {
+    extend: {
+      colors: {
+        primary: "#3b82f6",
+        secondary: "#10b981",
+      },
+    },
+  },
+})
+`
+            if (!fs.existsSync(uiConfigPath)) {
+                await fs.writeFile(uiConfigPath, uiConfigContent)
+                console.log("✓ Created ui.config.ts")
+            }
 
             console.log("\nInstalling base components...")
             try {

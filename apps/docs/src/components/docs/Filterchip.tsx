@@ -1,22 +1,22 @@
 import React from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { X } from "lucide-react";
 
-interface FilterChipProps<T extends Record<string, string[]>> {
+interface FilterChipProps {
     filterOptions: {
         group: string;
-        key: keyof T;
+        key: string;
         options: { label: string; value: string }[];
     }[];
-    filters: T;
-    removeValue: (groupKey: keyof T, value: string) => void;
+    filters: Record<string, string[]>;
+    removeValue: (groupKey: string, value: string) => void;
 }
 
-export const FilterChip = <T extends Record<string, string[]>>({ filterOptions, filters, removeValue }: FilterChipProps<T>) => {
+export const FilterChip = ({ filterOptions, filters, removeValue }: FilterChipProps) => {
     return (
         <div className="flex gap-2 overflow-x-auto overflow-hidden">
             {filterOptions.map(group =>
-                filters[group.key].map((val: string) => {
+                filters[group.key].map((val) => {
                     const opt = group.options.find((o: any) => o.value === val);
                     return (
                         <motion.div
